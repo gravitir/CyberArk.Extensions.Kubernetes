@@ -139,6 +139,8 @@ namespace CyberArk.Extensions.KubernetesServiceAccount
                 // Note: To fetch Logon, Reconcile, Master or Usage account properties,
                 // replace the TargetAccount object with the relevant account's object.
 
+                string kubeVersion = ParametersAPI.GetMandatoryParameter("keyid", TargetAccount.AccountProp);
+
                 #endregion
 
                 #region Fetch Account's Passwords
@@ -165,8 +167,8 @@ namespace CyberArk.Extensions.KubernetesServiceAccount
 
                 HttpClient client = ClientWithCert(targetAddr, clientP12);
 
-                string postBodyWhoami = "{\"kind\":\"SelfSubjectReview\",\"apiVersion\":\"authentication.k8s.io/v1\",\"metadata\":{\"creationTimestamp\":null},\"status\":{\"userInfo\":{}}}";
-                string requestUriWhoami = "apis/authentication.k8s.io/v1/selfsubjectreviews";
+                string postBodyWhoami = "{\"kind\":\"SelfSubjectReview\",\"apiVersion\":\"authentication.k8s.io/" + kubeVersion + "\",\"metadata\":{\"creationTimestamp\":null},\"status\":{\"userInfo\":{}}}";
+                string requestUriWhoami = "apis/authentication.k8s.io/" + kubeVersion + "/selfsubjectreviews";
                 JObject responseWhoami = JObject.Parse(HttpPost(client, requestUriWhoami, postBodyWhoami).GetAwaiter().GetResult());
                 if (!(responseWhoami["status"] is null))
                 {
