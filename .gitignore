@@ -1,15 +1,18 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
 /bin/Extensions/CyberArk.Extensions.KubernetesServiceAccount
 /CPM-ServiceAccount/.vs
-/CPM-ServiceAccount/bin/x86
 /CPM-ServiceAccount/obj
 /CPM-ServiceAccount/packages
+/CPM-ServiceAccount/bin/x86/Debug
+/CPM-ServiceAccount/bin/Debug
+/CPM-ServiceAccount/bin/Release
 /.vs
 /bin/Extensions/CyberArk.Extensions.KubernetesKubeConfig/Release
 /CPM-KubeConfig/.vs
-/CPM-KubeConfig/bin/x86/Release
 /CPM-KubeConfig/obj
 /CPM-KubeConfig/packages
+/CPM-KubeConfig/bin/x86/Debug
+/CPM-KubeConfig/bin/Debug
+/CPM-KubeConfig/bin/Release
