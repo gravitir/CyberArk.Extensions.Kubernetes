@@ -89,7 +89,6 @@ namespace CyberArk.Extensions.KubernetesServiceAccount
                 // replace the TargetAccount object with the relevant account's object.
 
                 string kubeVersion = ParametersAPI.GetMandatoryParameter("keyid", TargetAccount.AccountProp);
-                // Extract major and minor version parts (e.g., "1.26" from "1.26.3")
 
                 #endregion
 

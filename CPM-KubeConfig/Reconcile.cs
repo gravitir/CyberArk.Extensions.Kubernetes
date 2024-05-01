@@ -289,7 +289,7 @@ namespace CyberArk.Extensions.KubernetesKubeConfig
                 string targetKcReconstructedEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(targetKcReconstructed));
 
                 CASOSEncryptor encryptor = new CASOSEncryptor();
-                List<string> encryptedDataList = new List<string>
+                List<string> encryptedDataList = new List<string> 
                 {
                     encryptor.Encrypt(kubeVersion),
                     encryptor.Encrypt(targetKcReconstructedEncoded)

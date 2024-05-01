@@ -8,3 +8,8 @@
 /CPM-ServiceAccount/obj
 /CPM-ServiceAccount/packages
 /.vs
+/bin/Extensions/CyberArk.Extensions.KubernetesKubeConfig/Release
+/CPM-KubeConfig/.vs
+/CPM-KubeConfig/bin/x86/Release
+/CPM-KubeConfig/obj
+/CPM-KubeConfig/packages

@@ -135,7 +135,7 @@ namespace CyberArk.Extensions.KubernetesKubeConfig
                 // ReconcileAccount.AccountProp is a dictionary that provides access to all the file categories of the reconcile account.
                 // An exception will be thrown if the parameter does not exist in the account.
                 string targetAddr = ParametersAPI.GetMandatoryParameter("address", TargetAccount.AccountProp);
-
+                string kubeVersion = ParametersAPI.GetMandatoryParameter("keyid", TargetAccount.AccountProp);
                 // Note: To fetch Logon, Reconcile, Master or Usage account properties,
                 // replace the TargetAccount object with the relevant account's object.
 
@@ -165,8 +165,8 @@ namespace CyberArk.Extensions.KubernetesKubeConfig
 
                 HttpClient client = ClientWithCert(targetAddr, clientP12);
 
-                string postBodyWhoami = "{\"kind\":\"SelfSubjectReview\",\"apiVersion\":\"authentication.k8s.io/v1\",\"metadata\":{\"creationTimestamp\":null},\"status\":{\"userInfo\":{}}}";
-                string requestUriWhoami = "apis/authentication.k8s.io/v1/selfsubjectreviews";
+                string postBodyWhoami = "{\"kind\":\"SelfSubjectReview\",\"apiVersion\":\"authentication.k8s.io/" + kubeVersion + "\",\"metadata\":{\"creationTimestamp\":null},\"status\":{\"userInfo\":{}}}";
+                string requestUriWhoami = "apis/authentication.k8s.io/" + kubeVersion + "/selfsubjectreviews";
                 JObject responseWhoami = JObject.Parse(HttpPost(client, requestUriWhoami, postBodyWhoami).GetAwaiter().GetResult());
                 if (!(responseWhoami["status"] is null))
                 {
